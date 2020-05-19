@@ -5,11 +5,11 @@ class AuthController < ApplicationController
 
     if is_authenticated
       payload = {user_id: user.id}
-      token = JWT.encode(payload, 'taxfreepegasus', 'HS256')
+      token = JWT.encode(payload, 'pegasuscode', 'HS256')
 # this returns a js web token
       render json: {token: token}
     else
-      render json: {errors: ["Invalid email id or password"]}, status: 422
+      render json: {errors: ["Invalid email id or password"]}, status: :unprocessable_entity
     end
   end
 end
